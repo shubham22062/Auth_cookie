@@ -9,41 +9,41 @@ export interface UserData{
 
 export default function Signin(){
 
-    const [user, setUser] = useState({
-        email:"",
-        password:"",
-    })
+  const [email, setEmail] = useState("");
+  const [password , setPassword] = useState("");
 
-    const navigate = useNavigate();
 
-    const handleSubmit = async(e:any)=>{
-        e.preventDefault();
 
-        const registerUser = await axios.post("http://localhost:3000" , user);
-
-        setUser({
-            email:"",
-            password:"",
-        })
-
-    }
+   
 
     return (
         <div>
             <h1>Welcome to signin page</h1>
-            <form onSubmit={handleSubmit}>
+            <form >
                 <div>
-                <input
+                <input onChange={(e)=>{
+                    setEmail(e.target.value)
+                }}
                  type="email"
                  placeholder="enter your eamil"
                 />
 
-                <input
+                <input onChange={(e)=>{
+                    setPassword(e.target.value)
+                }}
                  type="password"
                  placeholder="enter your password..."
                 />
 
-                <button>submit</button>
+                <button onClick={async()=>{
+                    await axios.post("http://localhost:3000/signin",{
+                        email,
+                        password
+                    },{
+                        withCredentails:true
+                    });
+                    alert("logged In")
+                }}>submit</button>
             </div>
             </form>
         </div>
