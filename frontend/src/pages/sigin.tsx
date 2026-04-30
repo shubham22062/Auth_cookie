@@ -1,4 +1,17 @@
+import { useState } from "react"
+
+export interface UserData{
+    email:string;
+    password:string;
+}
+
 export default function Signin(){
+
+    const [user, setUser] = useState({
+        email:"",
+        password:"",
+    })
+    
     return (
         <div>
             <h1>Welcome to signin page</h1>
