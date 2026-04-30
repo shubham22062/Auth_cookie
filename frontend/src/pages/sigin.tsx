@@ -31,7 +31,7 @@ export default function Signin(){
     return (
         <div>
             <h1>Welcome to signin page</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div>
                 <input
                  type="email"
