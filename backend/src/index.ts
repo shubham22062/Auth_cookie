@@ -34,6 +34,7 @@ app.get("/user", (req,res)=>{
 
     res.send({
         userId: decoded.id
+       
     })
 })
 
@@ -44,4 +45,6 @@ app.post("/logout" , (req,res)=>{
     })
 })
 
-app.listen(3000);
+app.listen(3000, ()=>{
+    console.log("Server is running on PORT http://localhost:3000")
+});
