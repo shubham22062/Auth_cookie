@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
+import axios from axios
 
 export interface UserData{
     email:string;
@@ -11,7 +13,21 @@ export default function Signin(){
         email:"",
         password:"",
     })
-    
+
+    const navigate = useNavigate();
+
+    const handleSubmit = async(e:any)=>{
+        e.preventDefault();
+
+        const registerUser = await axios.post("http://localhost:3000" , user);
+
+        setUser({
+            email:"",
+            password:"",
+        })
+
+    }
+
     return (
         <div>
             <h1>Welcome to signin page</h1>
